@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Usuarios</title>        
+    </h:head>
+    <body>
+        <ui:composition template="/Plantillas/plantillaAdmin.xhtml">
+
+            <ui:define name="content">
+
+                <p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+                    <f:facet name="start">
+                        <h:graphicImage library="images" name="ajaxloading.gif" />
+                    </f:facet>
+                    <f:facet name="complete">
+                        <h:outputText value="" />
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <h:form>
+                    <p:growl id="mensaje" autoUpdate="true" severity="info, fatal" showSummary="true" showDetail="true"/>                    
+                    <p:fieldset legend="Datos Personales">
+                        <h:panelGrid columns="3" id="pngPersona">
+                            <p:outputLabel for="txtNombre" value="Nombre" />
+                            <p:inputText id="txtNombre" value="#{usuarioBean.persona.nombre}" required="true"/>
+                            <p:message for="txtNombre"/>
+                            
+                            <p:outputLabel for="txtApellido" value="Apellido" />
+                            <p:inputText id="txtApellido" value="#{usuarioBean.persona.apellido}" required="true" />
+                            <p:message for="txtApellido"/>
+                            
+                            <p:outputLabel for="txtEmail" value="Email" />
+                            <p:inputText id="txtEmail" value="#{usuarioBean.persona.email}" required="true"/>
+                            <p:message for="txtEmail" />
+                                                        
+                            <p:outputLabel for="txtTelefono" value="Telefono" />
+                            <p:inputText id="txtTelefono" value="#{usuarioBean.persona.telefono}"  required="true"/>
+                            <p:message for="txtTelefono" />
+                            
+                        </h:panelGrid>
+                    </p:fieldset>
+
+                    <p:fieldset legend="Datos de la Cuenta">
+                        <h:panelGrid columns="3" id="pngUsuario">
+                            <p:outputLabel  for="sorTipo" value="Tipo"  />
+                            <p:selectOneRadio id="sorTipo" value="#{usuarioBean.usuario.tipo}">
+                                <f:selectItem itemValue="A" itemLabel="ADMINISTRADOR" />
+                                <f:selectItem itemValue="U" itemLabel="USUARIO"/>
+                            </p:selectOneRadio>
+                            <p:message for="sorTipo" />
+                            
+                            
+                            <p:outputLabel for="txtEstado" value="Estado" />                
+                            <p:inputText id="txtEstado" value="#{usuarioBean.usuario.estado}" required="true"/>
+                            <p:message for="txtEstado" />
+                            
+                            <p:outputLabel for="txtUsuario" value="Usuario" />
+                            <p:inputText id="txtUsuario" value="#{usuarioBean.usuario.username}" required="true"/>
+                            <p:message for="txtUsuario" />
+                            
+                            <p:outputLabel for="clave1" value="Clave" />
+                            <p:password id="clave1" value="#{usuarioBean.usuario.password}" 
+                                        validatorMessage="Las claves no coninciden." 
+                                        weakLabel="Debil" strongLabel="Fuerte" goodLabel="Bueno" 
+                                        match="clave2" feedback="true" promptLabel="Ingrese una calave"/>
+                            <p:message for="clave1" />
+                            
+                            <p:outputLabel for="clave2" value="Repetir clave" />
+                            <p:password id="clave2" />  
+                            <p:message for="clave2" />
+                            
+                           <p:commandButton icon="ui-icon-check" value="Agregar"  update="pngPersona, pngUsuario, mensaje" actionListener="#{usuarioBean.registrar()}" /> 
+                        </h:panelGrid>                        
+                    </p:fieldset>
+                    
+                </h:form>
+            </ui:define>
+        </ui:composition>        
+    </body>
+</html>
