@@ -6,35 +6,34 @@
 package com.seia.gp.modelo;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+
 
 /**
  *
  * @author Leo
  */
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 @Table(name = "persona")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Persona.findAll", query = "SELECT p FROM Persona p")
     , @NamedQuery(name = "Persona.findById", query = "SELECT p FROM Persona p WHERE p.id = :id")
-    , @NamedQuery(name = "Persona.findByNombre", query = "SELECT p FROM Persona p WHERE p.nombre = :nombre")
+    , @NamedQuery(name = "Persona.findByNombreApellido", query = "SELECT p FROM Persona p WHERE p.nombre = :nombre and p.apellido = :apellido")
     , @NamedQuery(name = "Persona.findByApellido", query = "SELECT p FROM Persona p WHERE p.apellido = :apellido")
     , @NamedQuery(name = "Persona.findByEmail", query = "SELECT p FROM Persona p WHERE p.email = :email")
     , @NamedQuery(name = "Persona.findByTelefono", query = "SELECT p FROM Persona p WHERE p.telefono = :telefono")})
@@ -69,27 +68,7 @@ public class Persona implements Serializable {
     @Size(max = 45)
     @Column(name = "telefono")
     private String telefono;
-  /*  
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
-    private List<Personaxproyecto> personaxproyectoList;
-    
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
-    private Usuario usuario;
 
-    public Persona() {
-    }
-
-    public Persona(Integer id) {
-        this.id = id;
-    }
-
-    public Persona(Integer id, String nombre, String apellido, String email) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
-    }
-*/
     public Integer getId() {
         return id;
     }
@@ -129,24 +108,7 @@ public class Persona implements Serializable {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-/*
-    @XmlTransient
-    public List<Personaxproyecto> getPersonaxproyectoList() {
-        return personaxproyectoList;
-    }
 
-    public void setPersonaxproyectoList(List<Personaxproyecto> personaxproyectoList) {
-        this.personaxproyectoList = personaxproyectoList;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-*/
     @Override
     public int hashCode() {
         int hash = 0;

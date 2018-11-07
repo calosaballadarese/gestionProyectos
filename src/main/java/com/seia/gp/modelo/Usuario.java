@@ -5,16 +5,13 @@
  */
 package com.seia.gp.modelo;
 
-import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -27,21 +24,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "usuario")
+@PrimaryKeyJoinColumn(name="id_persona")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
     , @NamedQuery(name = "Usuario.findByUsername", query = "SELECT u FROM Usuario u WHERE u.username = :username")
     , @NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.password = :password")})
-public class Usuario implements Serializable {
+
+public class Usuario extends Persona {
 
     private static final long serialVersionUID = 1L;
    
-    @Id
-    @OneToOne(cascade = CascadeType.PERSIST, optional = false)
-    @JoinColumn(name = "id_persona", referencedColumnName = "id", nullable= false)    
-    private Persona persona;
-    
-    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -64,18 +57,7 @@ public class Usuario implements Serializable {
     
     public Usuario() {
     }
-/*3
-    public Usuario(Persona persona) {
-        this.persona = persona;
-        
-    }
 
-    public Usuario(Persona persona, String username, String password) {
-        this.persona = persona;
-        this.username = username;
-        this.password = password;
-    }
-*/
     public String getUsername() {
         return username;
     }
@@ -90,14 +72,6 @@ public class Usuario implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
     }
     
     
@@ -116,25 +90,39 @@ public class Usuario implements Serializable {
     public void setEstado(short estado) {
         this.estado = estado;
     }
-    
-    
 
-    
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (persona != null ? persona.hashCode() : 0);
+        int hash = 5;
+        hash = 31 * hash + Objects.hashCode(this.username);
+        hash = 31 * hash + Objects.hashCode(this.password);
+        hash = 31 * hash + Objects.hashCode(this.tipo);
+        hash = 31 * hash + this.estado;
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Usuario)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Usuario other = (Usuario) object;
-        if ((this.persona == null && other.persona != null) || (this.persona != null && !this.persona.equals(other.persona))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (this.estado != other.estado) {
+            return false;
+        }
+        if (!Objects.equals(this.username, other.username)) {
+            return false;
+        }
+        if (!Objects.equals(this.password, other.password)) {
+            return false;
+        }
+        if (!Objects.equals(this.tipo, other.tipo)) {
             return false;
         }
         return true;
@@ -142,7 +130,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.seia.gp.modelo.Usuario[ idPersona=" + persona + " ]";
+        return "Usuario{" + "username=" + username + ", password=" + password + ", tipo=" + tipo + ", estado=" + estado + '}';
     }
     
 }

@@ -71,8 +71,8 @@ public class Activdad implements Serializable {
     @Size(max = 200)
     @Column(name = "Observaciones")
     private String observaciones;
-    @OneToMany(mappedBy = "activdad")
-    private List<Personaxactividad> personaxactividadList;
+
+    
     @JoinColumn(name = "id_proyecto", referencedColumnName = "id")
     @ManyToOne
     private Proyecto proyecto;
@@ -141,14 +141,6 @@ public class Activdad implements Serializable {
         this.observaciones = observaciones;
     }
 
-    @XmlTransient
-    public List<Personaxactividad> getPersonaxactividadList() {
-        return personaxactividadList;
-    }
-
-    public void setPersonaxactividadList(List<Personaxactividad> personaxactividadList) {
-        this.personaxactividadList = personaxactividadList;
-    }
 
     public Proyecto getProyecto() {
         return proyecto;

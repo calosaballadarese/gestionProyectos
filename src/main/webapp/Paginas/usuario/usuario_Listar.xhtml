@@ -34,7 +34,7 @@
                         var="usuario" 
                         value="#{usuarioBean.usuarios}" 
                         editable="true" 
-                        rowKey="#{usuario.persona.id}"
+                        rowKey="#{usuario.id}"
                         selection="#{usuarioBean.usuario}" 
                         selectionMode="single">
 
@@ -45,10 +45,21 @@
                         <p:column headerText="Nombre">
                             <p:cellEditor>
                                 <f:facet name="output">
-                                    <h:outputText value="#{usuario.persona.nombre}" />
+                                    <h:outputText value="#{usuario.nombre}" />
                                 </f:facet>
                                 <f:facet name="input">
-                                    <p:inputText value="#{usuario.persona.nombre}" />
+                                    <p:inputText value="#{usuario.nombre}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                                                                                          
+                        <p:column headerText="Apellido">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{usuario.apellido}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{usuario.apellido}" />
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>
@@ -56,10 +67,10 @@
                         <p:column headerText="Teléfono">
                             <p:cellEditor>
                                 <f:facet name="output">
-                                    <h:outputText value="#{usuario.persona.telefono}" />
+                                    <h:outputText value="#{usuario.telefono}" />
                                 </f:facet>
                                 <f:facet name="input">
-                                    <p:inputText value="#{usuario.persona.telefono}" />
+                                    <p:inputText value="#{usuario.telefono}" />
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>
@@ -67,10 +78,10 @@
                         <p:column headerText="Correo">
                             <p:cellEditor>
                                 <f:facet name="output">
-                                    <h:outputText value="#{usuario.persona.email}" />
+                                    <h:outputText value="#{usuario.email}" />
                                 </f:facet>
                                 <f:facet name="input">
-                                    <p:inputText value="#{usuario.persona.email}" />
+                                    <p:inputText value="#{usuario.email}" />
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>
@@ -134,7 +145,7 @@
                         <p:outputPanel id="rolDetalle" style="text-align:center;">
                             <p:panelGrid  columns="2" columnClasses="label,value">
                                 <h:outputText value="Nombre" />
-                                <h:inputText value="#{usuarioBean.persona.nombre}" />
+                                <h:inputText value="#{usuarioBean.usuario.nombre}" />
                                                                                        
                                 <f:facet name="footer">
                                     <h:commandButton value="Agregar" actionListener="#{usuarioBean.agregar}" />

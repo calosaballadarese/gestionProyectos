@@ -75,8 +75,7 @@ public class Proyecto implements Serializable {
     @Size(max = 200)
     @Column(name = "observaciones")
     private String observaciones;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "proyecto")
-    private List<Personaxproyecto> personaxproyectoList;
+
     @OneToMany(mappedBy = "proyecto")
     private List<Activdad> activdadList;
     @OneToMany(mappedBy = "proyecto")
@@ -155,14 +154,6 @@ public class Proyecto implements Serializable {
         this.observaciones = observaciones;
     }
 
-    @XmlTransient
-    public List<Personaxproyecto> getPersonaxproyectoList() {
-        return personaxproyectoList;
-    }
-
-    public void setPersonaxproyectoList(List<Personaxproyecto> personaxproyectoList) {
-        this.personaxproyectoList = personaxproyectoList;
-    }
 
     @XmlTransient
     public List<Activdad> getActivdadList() {

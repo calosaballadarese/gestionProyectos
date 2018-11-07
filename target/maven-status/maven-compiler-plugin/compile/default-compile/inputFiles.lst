@@ -1,18 +1,17 @@
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\AbstractFacade.java
-G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\PersonaxproyectoFacadeLocal.java
+G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\controlador\exceptions\PreexistingEntityException.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\modelo\Usuario.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\modelo\Reunion.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\RolFacadeLocal.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\ReunionactividadFacadeLocal.java
-G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\PersonaxactividadFacadeLocal.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\ProyectoFacadeLocal.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\PersonaFacadeLocal.java
-G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\PersonaxactividadFacade.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\ReunionFacade.java
+G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\controlador\exceptions\IllegalOrphanException.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\controlador\RolBean.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\EstadoFacadeLocal.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\modelo\Reunionactividad.java
-G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\modelo\Personaxactividad.java
+G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\controlador\exceptions\NonexistentEntityException.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\RolFacade.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\EstadoFacade.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\modelo\Estado.java
@@ -23,8 +22,8 @@ G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\controlador\TipoReunionB
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\controlador\EstadoBean.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\ProyectoFacade.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\UsuarioFacade.java
-G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\modelo\Personaxproyecto.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\modelo\Proyecto.java
+G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\controlador\exceptions\RollbackFailureException.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\ActivdadFacade.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\ReunionactividadFacade.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\TiporeunionFacade.java
@@ -34,5 +33,4 @@ G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\modelo\Persona.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\UsuarioFacadeLocal.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\PersonaFacade.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\modelo\Rol.java
-G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\PersonaxproyectoFacade.java
 G:\proyectos\GestionProyectos\src\main\java\com\seia\gp\servicio\TiporeunionFacadeLocal.java

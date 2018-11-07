@@ -33,19 +33,19 @@ and open the template in the editor.
                     <p:fieldset legend="Datos Personales">
                         <h:panelGrid columns="3" id="pngPersona">
                             <p:outputLabel for="txtNombre" value="Nombre" />
-                            <p:inputText id="txtNombre" value="#{usuarioBean.persona.nombre}" required="true"/>
+                            <p:inputText id="txtNombre" value="#{usuarioBean.usuario.nombre}" required="true"/>
                             <p:message for="txtNombre"/>
                             
                             <p:outputLabel for="txtApellido" value="Apellido" />
-                            <p:inputText id="txtApellido" value="#{usuarioBean.persona.apellido}" required="true" />
+                            <p:inputText id="txtApellido" value="#{usuarioBean.usuario.apellido}" required="true" />
                             <p:message for="txtApellido"/>
                             
                             <p:outputLabel for="txtEmail" value="Email" />
-                            <p:inputText id="txtEmail" value="#{usuarioBean.persona.email}" required="true"/>
+                            <p:inputText id="txtEmail" value="#{usuarioBean.usuario.email}" required="true"/>
                             <p:message for="txtEmail" />
                                                         
                             <p:outputLabel for="txtTelefono" value="Telefono" />
-                            <p:inputText id="txtTelefono" value="#{usuarioBean.persona.telefono}"  required="true"/>
+                            <p:inputText id="txtTelefono" value="#{usuarioBean.usuario.telefono}"  required="true"/>
                             <p:message for="txtTelefono" />
                             
                         </h:panelGrid>
@@ -59,8 +59,7 @@ and open the template in the editor.
                                 <f:selectItem itemValue="U" itemLabel="USUARIO"/>
                             </p:selectOneRadio>
                             <p:message for="sorTipo" />
-                            
-                            
+                                                     
                             <p:outputLabel for="txtEstado" value="Estado" />                
                             <p:inputText id="txtEstado" value="#{usuarioBean.usuario.estado}" required="true"/>
                             <p:message for="txtEstado" />

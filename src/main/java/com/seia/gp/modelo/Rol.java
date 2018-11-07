@@ -47,8 +47,6 @@ public class Rol implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "nombre")
     private String nombre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rol")
-    private List<Personaxproyecto> personaxproyectoList;
 
     public Rol() {
     }
@@ -76,15 +74,6 @@ public class Rol implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    @XmlTransient
-    public List<Personaxproyecto> getPersonaxproyectoList() {
-        return personaxproyectoList;
-    }
-
-    public void setPersonaxproyectoList(List<Personaxproyecto> personaxproyectoList) {
-        this.personaxproyectoList = personaxproyectoList;
     }
 
     @Override

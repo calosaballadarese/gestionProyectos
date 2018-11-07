@@ -6,11 +6,9 @@
 package com.seia.gp.controlador;
 
 import java.util.List;
-import com.seia.gp.modelo.Persona;
 import com.seia.gp.modelo.Usuario;
 import com.seia.gp.servicio.UsuarioFacadeLocal;
 import java.io.Serializable;
-import static java.sql.DriverManager.println;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -26,15 +24,13 @@ public class UsuarioBean implements Serializable{
     @Inject
     private UsuarioFacadeLocal usuarioService;
     private Usuario usuario;
-    private Persona persona;
     List<Usuario> usuarios; 
 
     
     @PostConstruct
     public void inicializar(){
         usuarios = usuarioService.findAll();
-        usuario = new Usuario();
-        persona = new Persona();    
+        usuario = new Usuario();   
     }
     
     public UsuarioBean (){}
@@ -56,14 +52,6 @@ public class UsuarioBean implements Serializable{
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
     
      public List<Usuario> getUsuarios() {
         return usuarios;
@@ -75,14 +63,18 @@ public class UsuarioBean implements Serializable{
     
     public void registrar(){
         try{
-            this.usuario.setPersona(persona);
-            usuarioService.create(usuario);
-            System.out.println(persona);
-            System.out.println(usuario);            
-            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso","Se registró exitosamente"));          
-        }catch (Exception e){
-            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Error",e.toString()));
+     
+            if (usuarioService.comprobarIngreso(usuario) == true) {
+                usuarioService.create(usuario);
+                FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso","Se registró exitosamente"));          
+            }else 
+                FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Error","El usuario ya existe, confirme sus datos"));  
+
         }
+        catch (Exception e){
+            System.out.println(e);
+            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Error", e.toString() + "--" + e.getMessage()));
+        } 
     }
     
      public void reiniciarSeleccionado() {
