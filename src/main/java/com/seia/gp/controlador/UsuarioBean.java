@@ -30,7 +30,9 @@ public class UsuarioBean implements Serializable{
     @PostConstruct
     public void inicializar(){
         usuarios = usuarioService.findAll();
-        usuario = new Usuario();   
+        usuario = new Usuario(); 
+        usuario.setTipo("U");
+        usuario.setEstado((short) 1);
     }
     
     public UsuarioBean (){}

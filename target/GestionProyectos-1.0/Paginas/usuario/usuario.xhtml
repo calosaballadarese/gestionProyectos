@@ -33,7 +33,7 @@ and open the template in the editor.
                     <p:fieldset legend="Datos Personales">
                         <h:panelGrid columns="3" id="pngPersona">
                             <p:outputLabel for="txtNombre" value="Nombre" />
-                            <p:inputText id="txtNombre" value="#{usuarioBean.usuario.nombre}" required="true"/>
+                            <p:inputText  id="txtNombre" value="#{usuarioBean.usuario.nombre}" required="true"/>
                             <p:message for="txtNombre"/>
                             
                             <p:outputLabel for="txtApellido" value="Apellido" />
@@ -41,11 +41,13 @@ and open the template in the editor.
                             <p:message for="txtApellido"/>
                             
                             <p:outputLabel for="txtEmail" value="Email" />
-                            <p:inputText id="txtEmail" value="#{usuarioBean.usuario.email}" required="true"/>
+                            <p:inputText id="txtEmail" value="#{usuarioBean.usuario.email}" required="true">
+                                   <p:keyFilter regEx="{1,20}@{1,20}.*{3}?"/>
+                            </p:inputText>         
                             <p:message for="txtEmail" />
                                                         
                             <p:outputLabel for="txtTelefono" value="Telefono" />
-                            <p:inputText id="txtTelefono" value="#{usuarioBean.usuario.telefono}"  required="true"/>
+                            <p:inputMask id="txtTelefono" value="#{usuarioBean.usuario.telefono}" mask="(999) 999-999999" required="true"/>
                             <p:message for="txtTelefono" />
                             
                         </h:panelGrid>
@@ -54,16 +56,12 @@ and open the template in the editor.
                     <p:fieldset legend="Datos de la Cuenta">
                         <h:panelGrid columns="3" id="pngUsuario">
                             <p:outputLabel  for="sorTipo" value="Tipo"  />
-                            <p:selectOneRadio id="sorTipo" value="#{usuarioBean.usuario.tipo}">
+                            <p:selectOneRadio id="sorTipo" value="#{usuarioBean.usuario.tipo}" required="true" >
                                 <f:selectItem itemValue="A" itemLabel="ADMINISTRADOR" />
-                                <f:selectItem itemValue="U" itemLabel="USUARIO"/>
+                                <f:selectItem itemValue="U" itemLabel="USUARIO" /> 
                             </p:selectOneRadio>
                             <p:message for="sorTipo" />
-                                                     
-                            <p:outputLabel for="txtEstado" value="Estado" />                
-                            <p:inputText id="txtEstado" value="#{usuarioBean.usuario.estado}" required="true"/>
-                            <p:message for="txtEstado" />
-                            
+                                                                               
                             <p:outputLabel for="txtUsuario" value="Usuario" />
                             <p:inputText id="txtUsuario" value="#{usuarioBean.usuario.username}" required="true"/>
                             <p:message for="txtUsuario" />
@@ -73,16 +71,18 @@ and open the template in the editor.
                                         validatorMessage="Las claves no coninciden." 
                                         weakLabel="Debil" strongLabel="Fuerte" goodLabel="Bueno" 
                                         match="clave2" feedback="true" promptLabel="Ingrese una calave"/>
+   
                             <p:message for="clave1" />
                             
                             <p:outputLabel for="clave2" value="Repetir clave" />
                             <p:password id="clave2" />  
                             <p:message for="clave2" />
                             
-                           <p:commandButton icon="ui-icon-check" value="Agregar"  update="pngPersona, pngUsuario, mensaje" actionListener="#{usuarioBean.registrar()}" /> 
+                           <p:commandButton icon="ui-icon-check" value="Agregar"  update="pngPersona, pngUsuario, mensaje" actionListener="#{usuarioBean.registrar()}" > 
+                           
+                           </p:commandButton>
                         </h:panelGrid>                        
-                    </p:fieldset>
-                    
+                    </p:fieldset>                                       
                 </h:form>
             </ui:define>
         </ui:composition>        

@@ -122,9 +122,9 @@
                     
                         <f:facet name="footer">
                             <p:spacer height="5px;"/>
-                            <p:commandButton value="Agregar" actionListener="#{usuarioBean.reiniciarSeleccionado}" oncomplete="PF('usuarioDialogo').show();" update="usuarios">
-                                <p:ajax event="dialogReturn" update="usuarios"/>
-                            </p:commandButton>
+                            <p:button outcome="/Paginas/usuario/usuario" value="Agregar" icon="ui-icon-wrench"/> 
+                          
+                           
                         </f:facet>
 
                         <p:column headerText="Opciones" style="width:50px">
@@ -140,24 +140,7 @@
                     </p:contextMenu>
                 </h:form>
                 
-                <h:form id="dialogoForm" prependId="false">
-                    <p:dialog header="Agregar usuario" widgetVar="rolDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-                        <p:outputPanel id="rolDetalle" style="text-align:center;">
-                            <p:panelGrid  columns="2" columnClasses="label,value">
-                                <h:outputText value="Nombre" />
-                                <h:inputText value="#{usuarioBean.usuario.nombre}" />
-                                                                                       
-                                <f:facet name="footer">
-                                    <h:commandButton value="Agregar" actionListener="#{usuarioBean.agregar}" />
-                                </f:facet>
 
-                            </p:panelGrid>
-                        </p:outputPanel>
-                    </p:dialog>
-                </h:form>
- 
-     
-                -->
             </ui:define>
         </ui:composition>
     </h:body>

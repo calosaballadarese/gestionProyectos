@@ -8,7 +8,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2018-11-06T23:33:01")
+@Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2018-11-07T23:52:37")
 @StaticMetamodel(Activdad.class)
 public class Activdad_ { 
 
