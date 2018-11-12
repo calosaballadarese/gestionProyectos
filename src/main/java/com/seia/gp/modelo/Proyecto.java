@@ -52,34 +52,42 @@ public class Proyecto implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "nombre")
     private String nombre;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "fecha_inicio")
     @Temporal(TemporalType.DATE)
     private Date fechaInicio;
+    
     @Column(name = "fecha_fin")
     @Temporal(TemporalType.DATE)
     private Date fechaFin;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "avance")
     private int avance;
+    
     @Size(max = 100)
     @Column(name = "descripcion")
     private String descripcion;
+    
     @Size(max = 200)
     @Column(name = "observaciones")
     private String observaciones;
 
     @OneToMany(mappedBy = "proyecto")
-    private List<Activdad> activdadList;
+    private List<Actividad> activdadList;
+    
     @OneToMany(mappedBy = "proyecto")
     private List<Reunion> reunionList;
+    
     @JoinColumn(name = "id_estado", referencedColumnName = "id")
     @ManyToOne
     private Estado estado;
@@ -156,11 +164,11 @@ public class Proyecto implements Serializable {
 
 
     @XmlTransient
-    public List<Activdad> getActivdadList() {
+    public List<Actividad> getActivdadList() {
         return activdadList;
     }
 
-    public void setActivdadList(List<Activdad> activdadList) {
+    public void setActivdadList(List<Actividad> activdadList) {
         this.activdadList = activdadList;
     }
 

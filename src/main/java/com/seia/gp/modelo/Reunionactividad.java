@@ -56,7 +56,7 @@ public class Reunionactividad implements Serializable {
     private String observaciones;
     @JoinColumn(name = "id_actividad", referencedColumnName = "id")
     @ManyToOne
-    private Activdad activdad;
+    private Actividad activdad;
     @JoinColumn(name = "id_reunion", referencedColumnName = "id", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Reunion reunion;
@@ -108,11 +108,11 @@ public class Reunionactividad implements Serializable {
         this.observaciones = observaciones;
     }
 
-    public Activdad getActivdad() {
+    public Actividad getActivdad() {
         return activdad;
     }
 
-    public void setActivdad(Activdad activdad) {
+    public void setActivdad(Actividad activdad) {
         this.activdad = activdad;
     }
 

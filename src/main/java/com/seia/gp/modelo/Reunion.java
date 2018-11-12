@@ -46,19 +46,24 @@ public class Reunion implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
+    
     @Size(max = 200)
     @Column(name = "observaciones")
     private String observaciones;
+    
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "reunion")
     private Reunionactividad reunionactividad;
+    
     @JoinColumn(name = "id_proyecto", referencedColumnName = "id")
     @ManyToOne
     private Proyecto proyecto;
+    
     @JoinColumn(name = "id_tiporeunion", referencedColumnName = "id")
     @ManyToOne
     private Tiporeunion tiporeunion;
