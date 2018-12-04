@@ -162,7 +162,6 @@ public class Proyecto implements Serializable {
         this.observaciones = observaciones;
     }
 
-
     @XmlTransient
     public List<Actividad> getActivdadList() {
         return activdadList;

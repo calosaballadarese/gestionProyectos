@@ -35,13 +35,13 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "activdad")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Activdad.findAll", query = "SELECT a FROM Activdad a")
-    , @NamedQuery(name = "Activdad.findById", query = "SELECT a FROM Activdad a WHERE a.id = :id")
-    , @NamedQuery(name = "Activdad.findByNombre", query = "SELECT a FROM Activdad a WHERE a.nombre = :nombre")
-    , @NamedQuery(name = "Activdad.findByFechaInicio", query = "SELECT a FROM Activdad a WHERE a.fechaInicio = :fechaInicio")
-    , @NamedQuery(name = "Activdad.findByFechaFin", query = "SELECT a FROM Activdad a WHERE a.fechaFin = :fechaFin")
-    , @NamedQuery(name = "Activdad.findByAvance", query = "SELECT a FROM Activdad a WHERE a.avance = :avance")
-    , @NamedQuery(name = "Activdad.findByObservaciones", query = "SELECT a FROM Activdad a WHERE a.observaciones = :observaciones")})
+    @NamedQuery(name = "Activdad.findAll", query = "SELECT a FROM Actividad a")
+    , @NamedQuery(name = "Activdad.findById", query = "SELECT a FROM Actividad a WHERE a.id = :id")
+    , @NamedQuery(name = "Activdad.findByNombre", query = "SELECT a FROM Actividad a WHERE a.nombre = :nombre")
+    , @NamedQuery(name = "Activdad.findByFechaInicio", query = "SELECT a FROM Actividad a WHERE a.fechaInicio = :fechaInicio")
+    , @NamedQuery(name = "Activdad.findByFechaFin", query = "SELECT a FROM Actividad a WHERE a.fechaFin = :fechaFin")
+    , @NamedQuery(name = "Activdad.findByAvance", query = "SELECT a FROM Actividad a WHERE a.avance = :avance")
+    , @NamedQuery(name = "Activdad.findByObservaciones", query = "SELECT a FROM Actividad a WHERE a.observaciones = :observaciones")})
 public class Actividad implements Serializable {
 
     private static final long serialVersionUID = 1L;

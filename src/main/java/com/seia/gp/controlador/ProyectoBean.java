@@ -10,6 +10,7 @@ import com.seia.gp.modelo.Proyecto;
 import com.seia.gp.modelo.Estado;
 import com.seia.gp.modelo.Recurso;
 import com.seia.gp.servicio.ProyectoFacadeLocal;
+import com.seia.gp.servicio.RecursoFacadeLocal;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -24,6 +25,7 @@ public class ProyectoBean implements Serializable {
         
     @Inject
     private ProyectoFacadeLocal proyectoService;
+    private RecursoFacadeLocal recursoService;
     private Proyecto proyecto;
     private Estado estado;
     private Actividad actividad;
@@ -32,8 +34,7 @@ public class ProyectoBean implements Serializable {
     List<Proyecto> proyectos;
     List<Actividad> actividades;
     List<Recurso> recursos;
-
-    
+  
     @PostConstruct
     public void inicializar(){
         proyectos = proyectoService.findAll();
@@ -41,6 +42,7 @@ public class ProyectoBean implements Serializable {
         estado = new Estado();
         estado.setId(1);
         proyecto.setEstado(estado);
+        recursos = recursoService.findAll();
     }
     
     public ProyectoBean (){}

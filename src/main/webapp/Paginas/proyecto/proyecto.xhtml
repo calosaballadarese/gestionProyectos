@@ -31,60 +31,12 @@ and open the template in the editor.
                 <h:form>
                     <p:growl id="mensaje" autoUpdate="true" severity="info, fatal" showSummary="true" showDetail="true"/>                    
                     <p:fieldset legend="Datos del Proyecto">
-                        <h:panelGrid columns="3" id="pngPersona">
-                            <p:outputLabel for="txtNombre" value="Nombre" />
-                            <p:inputText  id="txtNombre" value="#{usuarioBean.usuario.nombre}" required="true"/>
-                            <p:message for="txtNombre"/>
-                            
-                            <p:outputLabel for="txtApellido" value="Apellido" />
-                            <p:inputText id="txtApellido" value="#{usuarioBean.usuario.apellido}" required="true" />
-                            <p:message for="txtApellido"/>
-                            
-                            <p:outputLabel for="txtEmail" value="Email" />
-                            <p:inputText id="txtEmail" value="#{usuarioBean.usuario.email}" required="true">
-                                   <p:keyFilter regEx="{1,20}@{1,20}.*{3}?"/>
-                            </p:inputText>         
-                            <p:message for="txtEmail" />
-                            
-                            
-                                                        
-                            <p:outputLabel for="txtTelefono" value="Telefono" />
-                            <p:inputMask id="txtTelefono" value="#{usuarioBean.usuario.telefono}" mask="(999) 999-999999" required="true"/>
-                            <p:message for="txtTelefono" />
-                            
-                        </h:panelGrid>
+                        
+                    <p:selectManyCheckbox id="grid" value="#{personaBean.personas}" layout="grid" columns="1">
+                        <f:selectItems value="#{personaBean.personas}" var="persona" itemLabel="#{persona.nombre} #{persona.apellido}" itemValue="#{persona.id}" />
+                    </p:selectManyCheckbox>
+                    
                     </p:fieldset>
-
-                    <p:fieldset legend="Datos de la Cuenta">
-                        <h:panelGrid columns="3" id="pngUsuario">
-                            <p:outputLabel  for="sorTipo" value="Tipo"  />
-                            <p:selectOneRadio id="sorTipo" value="#{usuarioBean.usuario.tipo}" required="true" >
-                                <f:selectItem itemValue="A" itemLabel="ADMINISTRADOR" />
-                                <f:selectItem itemValue="U" itemLabel="USUARIO" /> 
-                            </p:selectOneRadio>
-                            <p:message for="sorTipo" />
-                                                                               
-                            <p:outputLabel for="txtUsuario" value="Usuario" />
-                            <p:inputText id="txtUsuario" value="#{usuarioBean.usuario.username}" required="true"/>
-                            <p:message for="txtUsuario" />
-                            
-                            <p:outputLabel for="clave1" value="Clave" />
-                            <p:password id="clave1" value="#{usuarioBean.usuario.password}" 
-                                        validatorMessage="Las claves no coninciden." 
-                                        weakLabel="Debil" strongLabel="Fuerte" goodLabel="Bueno" 
-                                        match="clave2" feedback="true" promptLabel="Ingrese una calave"/>
-   
-                            <p:message for="clave1" />
-                            
-                            <p:outputLabel for="clave2" value="Repetir clave" />
-                            <p:password id="clave2" />  
-                            <p:message for="clave2" />
-                            
-                           <p:commandButton icon="ui-icon-check" value="Agregar"  update="pngPersona, pngUsuario, mensaje" actionListener="#{usuarioBean.registrar()}" > 
-                           
-                           </p:commandButton>
-                        </h:panelGrid>                        
-                    </p:fieldset>                                       
                 </h:form>
             </ui:define>
         </ui:composition>        
