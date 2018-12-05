@@ -32,10 +32,35 @@ and open the template in the editor.
                     <p:growl id="mensaje" autoUpdate="true" severity="info, fatal" showSummary="true" showDetail="true"/>                    
                     <p:fieldset legend="Datos del Proyecto">
                         
-                    <p:selectManyCheckbox id="grid" value="#{personaBean.personas}" layout="grid" columns="1">
-                        <f:selectItems value="#{personaBean.personas}" var="persona" itemLabel="#{persona.nombre} #{persona.apellido}" itemValue="#{persona.id}" />
-                    </p:selectManyCheckbox>
-                    
+                        <h:panelGrid columns="3" id="pngProyecto">
+                            <p:outputLabel for="txtNombre" value="Nombre" />
+                            <p:inputTextarea  rows="2" cols="45"  maxlength="100" id="txtNombre" value="#{proyectoBean.proyecto.nombre}" required="true"/>
+                            <p:message for="txtNombre"/>
+                            
+                            <p:outputLabel for="txtDescripcion" value="Descripcion" />
+                            <p:inputTextarea rows="3" cols="45" maxlength="100" id="txtDescripcion" value="#{proyectoBean.proyecto.descripcion}" required="true" />
+                            <p:message for="txtDescripcion"/>
+                            
+                            <p:outputLabel for="txtObservaciones" value="Observciones" />
+                            <p:inputTextarea rows="3" cols="45" id="txtObservaciones" maxlength="200" value="#{proyectoBean.proyecto.observaciones}" required="false"/>   
+                            <p:message for="txtObservaciones" />                                                                                   
+                        </h:panelGrid>
+                        
+                        <h:panelGrid columns="2" cellpadding="5">
+                            
+                            <p:outputLabel for="productOwner" value="Dueño del Producto:" />
+                            <p:selectOneMenu id="productOwner" value="#{personaBean.personaSeleccionado}">
+                                <f:selectItem itemLabel="Seleccione uno" itemValue="" />
+                                <f:selectItems value="#{personaBean.personas}" />
+                            </p:selectOneMenu>
+                            
+                            <h:outputLabel for="equipo" value="Equipo:" />
+                            <p:selectManyCheckbox id="grid" value="#{personaBean.personas}" layout="grid" columns="1">
+                                <f:selectItems value="#{personaBean.personas}" var="persona" itemLabel="#{persona.nombre} #{persona.apellido}" itemValue="#{persona.id}" />
+                            </p:selectManyCheckbox>   
+                        </h:panelGrid>
+                        
+                        <p:commandButton icon="ui-icon-check" value="Agregar"  update="mensaje" actionListener="#{proyectoBean.registrar()}" /> 
                     </p:fieldset>
                 </h:form>
             </ui:define>

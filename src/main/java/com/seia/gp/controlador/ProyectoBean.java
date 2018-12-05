@@ -5,18 +5,18 @@
  */
 package com.seia.gp.controlador;
 
-import com.seia.gp.modelo.Actividad;
+
 import com.seia.gp.modelo.Proyecto;
-import com.seia.gp.modelo.Estado;
-import com.seia.gp.modelo.Recurso;
 import com.seia.gp.servicio.ProyectoFacadeLocal;
-import com.seia.gp.servicio.RecursoFacadeLocal;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 
 @Named
@@ -25,26 +25,57 @@ public class ProyectoBean implements Serializable {
         
     @Inject
     private ProyectoFacadeLocal proyectoService;
-    private RecursoFacadeLocal recursoService;
     private Proyecto proyecto;
-    private Estado estado;
-    private Actividad actividad;
-    private Recurso recurso;
-    
     List<Proyecto> proyectos;
-    List<Actividad> actividades;
-    List<Recurso> recursos;
+    
+    
   
     @PostConstruct
     public void inicializar(){
         proyectos = proyectoService.findAll();
         proyecto = new Proyecto(); 
-        estado = new Estado();
-        estado.setId(1);
-        proyecto.setEstado(estado);
-        recursos = recursoService.findAll();
+
     }
     
     public ProyectoBean (){}
+
+    public ProyectoFacadeLocal getProyectoService() {
+        return proyectoService;
+    }
+
+    public void setProyectoService(ProyectoFacadeLocal proyectoService) {
+        this.proyectoService = proyectoService;
+    }
+
+  
+    public Proyecto getProyecto() {
+        return proyecto;
+    }
+
+    public void setProyecto(Proyecto proyecto) {
+        this.proyecto = proyecto;
+    }
+
+    public List<Proyecto> getProyectos() {
+        return proyectos;
+    }
+
+    public void setProyectos(List<Proyecto> proyectos) {
+        this.proyectos = proyectos;
+    }
     
+     public void registrar(){
+        try{
+            java.util.Date fecha = new Date();
+            proyecto.setFechaInicio(fecha);
+            proyecto.setAvance(0);
+            proyectoService.create(proyecto);
+            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso","Se registró exitosamente"));          
+       
+        }
+        catch (Exception e){
+            System.out.println(e);
+            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Error", e.toString() + "--" + e.getMessage()));
+        } 
+    }
 }

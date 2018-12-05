@@ -2,6 +2,7 @@ package com.seia.gp.modelo;
 
 import com.seia.gp.modelo.Actividad;
 import com.seia.gp.modelo.Estado;
+import com.seia.gp.modelo.Recurso;
 import com.seia.gp.modelo.Reunion;
 import java.util.Date;
 import javax.annotation.Generated;
@@ -9,11 +10,12 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2018-11-20T23:39:38")
+@Generated(value="EclipseLink-2.7.0.v20170811-rNA", date="2018-12-04T23:42:21")
 @StaticMetamodel(Proyecto.class)
 public class Proyecto_ { 
 
     public static volatile SingularAttribute<Proyecto, String> descripcion;
+    public static volatile ListAttribute<Proyecto, Recurso> recrsoList;
     public static volatile SingularAttribute<Proyecto, Estado> estado;
     public static volatile SingularAttribute<Proyecto, Date> fechaInicio;
     public static volatile SingularAttribute<Proyecto, Integer> avance;

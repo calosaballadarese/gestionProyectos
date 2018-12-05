@@ -25,6 +25,14 @@ public class PersonaBean implements Serializable {
     private Persona personaSeleccionado;
     List<Persona> personas;
 
+    public Persona getPersonaSeleccionado() {
+        return personaSeleccionado;
+    }
+
+    public void setPersonaSeleccionado(Persona personaSeleccionado) {
+        this.personaSeleccionado = personaSeleccionado;
+    }
+
     
     @PostConstruct
     public void inicializar(){

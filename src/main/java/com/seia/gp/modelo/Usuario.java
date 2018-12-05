@@ -133,7 +133,7 @@ public class Usuario extends Persona {
 
     @Override
     public String toString() {
-        return "Usuario{" + "username=" + username + ", password=" + password + ", tipo=" + tipo + ", estado=" + estado + '}';
+        return  this.getNombre()  + " " + this.getApellido() ;
     }
     
 }

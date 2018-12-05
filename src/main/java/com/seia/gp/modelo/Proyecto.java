@@ -55,7 +55,7 @@ public class Proyecto implements Serializable {
     
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
+    @Size(min = 1, max = 100)
     @Column(name = "nombre")
     private String nombre;
     
@@ -84,6 +84,10 @@ public class Proyecto implements Serializable {
 
     @OneToMany(mappedBy = "proyecto")
     private List<Actividad> activdadList;
+    
+    @OneToMany(mappedBy = "proyecto")
+    private List<Recurso> recrsoList;
+    
     
     @OneToMany(mappedBy = "proyecto")
     private List<Reunion> reunionList;

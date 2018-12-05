@@ -52,7 +52,7 @@
                             </p:cellEditor>
                         </p:column>
 
-                   <f:facet name="footer">
+                        <f:facet name="footer">
                             <p:spacer height="5px;"/>
                             <p:commandButton value="Agregar" actionListener="#{rolBean.reiniciarSeleccionado}" oncomplete="PF('rolDialogo').show();" update="roles">
                                 <p:ajax event="dialogReturn" update="roles"/>
